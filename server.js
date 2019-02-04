@@ -45,7 +45,10 @@ async function start () {
     },
     {
       plugin: require('./web/add-user-to-views')
-    }
+	},
+	{
+	  plugin: require('./web/user-signup-login')
+	}
   ])
 
   // view configuration
