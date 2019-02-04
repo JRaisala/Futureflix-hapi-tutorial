@@ -1,0 +1,80 @@
+{
+  "name": "futureflix",
+  "description": "Netflix like streaming platform — learnhapi.com",
+  "version": "2.1.1",
+  "author": "Future Studio <info@futurestud.io>",
+  "bugs": {
+    "url": "https://github.com/fs-opensource/futureflix-starter-kit/issues"
+  },
+  "contributors": [
+    {
+      "name": "Marcus Poehls",
+      "email": "marcus@futurestud.io"
+    },
+    {
+      "name": "Norman Peitek",
+      "email": "norman@futurestud.io"
+    },
+    {
+      "name": "Christian Fellner",
+      "email": "christian@futurestud.io"
+    }
+  ],
+  "dependencies": {
+    "axios": "~0.18.0",
+    "boom": "~7.3.0",
+    "dotenv": "~6.2.0",
+    "handlebars": "~4.0.12",
+    "handlebars-helper-repeat": "~2.0.0",
+    "hapi": "~17.8.1",
+    "hoek": "~6.1.2",
+    "html-to-text": "~4.0.0",
+    "inert": "~5.1.2",
+    "joi": "~14.3.0",
+    "listr": "~0.14.3",
+    "lodash": "~4.17.11",
+    "mongoose": "~5.4.0",
+    "mongoose-simple-random": "~0.4.1",
+    "vision": "~5.4.4"
+  },
+  "devDependencies": {
+    "code": "~5.2.0",
+    "cross-env": "~5.2.0",
+    "eslint": "~5.10.0",
+    "eslint-config-standard": "~12.0.0",
+    "eslint-plugin-import": "~2.14.0",
+    "eslint-plugin-node": "~8.0.0",
+    "eslint-plugin-promise": "~4.0.1",
+    "eslint-plugin-standard": "~4.0.0",
+    "lab": "~18.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0"
+  },
+  "homepage": "https://github.com/fs-opensource/futureflix-starter-kit",
+  "keywords": [
+    "futureflix",
+    "hapi",
+    "hapi.js",
+    "mongodb",
+    "mongoose",
+    "node",
+    "node.js",
+    "tutorial",
+    "tutorials",
+    "bulma"
+  ],
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fs-opensource/futureflix-starter-kit.git"
+  },
+  "scripts": {
+    "cleanup": "node ./data/load-sample-data.js --destroy",
+    "setup": "npm run pumpitup",
+    "pumpitup": "node ./data/load-sample-data.js",
+    "test": "cross-env NODE_ENV=test lab --assert code --leaks --coverage --lint",
+    "lint": "./node_modules/eslint/bin/eslint.js . --fix --ext .js"
+  }
+}
