@@ -10,10 +10,10 @@ const Episode = require('./episode')
 Mongoose.Promise = global.Promise
 
 // Connect to your database
-Mongoose.connect(process.env.DATABASE || 'mongodb://localhost/futureflix', {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useFindAndModify: false
+Mongoose.connect(process.env.DATABASE || 'mongodb://homer:password1@ds139341.mlab.com:39341/hapi-tutorial-auth-server-db', 
+{   useCreateIndex: true,
+	useNewUrlParser: true,
+	useFindAndModify: false
 })
 
 // listen for connection errors and print the message
