@@ -22,6 +22,11 @@ Mongoose.connection.on('error', err => {
   throw err
 })
 
+// listen for successful connection
+Mongoose.connection.on('connected', () => {  
+	console.log(`✅  connected to Mongo`)
+  })
+
 // use ES6 shorthands: "propertyName: variableName" equals "propertyName"
 module.exports = {
   Movie,
