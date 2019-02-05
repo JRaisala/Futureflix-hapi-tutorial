@@ -22,20 +22,23 @@
   ],
   "dependencies": {
     "axios": "~0.18.0",
-    "boom": "~7.3.0",
+    "bcrypt": "^3.0.3",
+    "boom": "^7.3.0",
     "dotenv": "^6.2.0",
     "handlebars": "~4.0.12",
     "handlebars-helper-repeat": "~2.0.0",
     "hapi": "~17.8.1",
+    "hapi-auth-cookie": "^9.1.0",
     "hoek": "~6.1.2",
     "html-to-text": "~4.0.0",
     "inert": "~5.1.2",
-    "joi": "~14.3.0",
+    "joi": "^14.3.1",
     "listr": "~0.14.3",
     "lodash": "~4.17.11",
     "mongoose": "~5.4.0",
     "mongoose-simple-random": "~0.4.1",
-    "vision": "~5.4.4"
+    "vision": "~5.4.4",
+    "when": "^3.7.8"
   },
   "devDependencies": {
     "code": "~5.2.0",

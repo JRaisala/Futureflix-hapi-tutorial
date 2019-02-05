@@ -1,6 +1,7 @@
 'use strict'
 
 const Mongoose = require('mongoose')
+const User = require('./user')
 const Movie = require('./movie')
 const Show = require('./show')
 const Season = require('./season')
@@ -29,6 +30,7 @@ Mongoose.connection.on('connected', () => {
 
 // use ES6 shorthands: "propertyName: variableName" equals "propertyName"
 module.exports = {
+  User,
   Movie,
   Show,
   Season,
