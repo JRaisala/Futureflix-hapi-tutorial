@@ -29,25 +29,25 @@ async function start () {
       plugin: require('vision')
     },
     {
-      plugin: require('./web/authentication')
+      plugin: require('./server/authentication')
     },
     {
-      plugin: require('./web/base')
+      plugin: require('./server/base')
     },
     {
-      plugin: require('./web/movies')
+      plugin: require('./server/movies')
     },
     {
-      plugin: require('./web/tv-shows')
+      plugin: require('./server/tv-shows')
     },
     {
-      plugin: require('./web/user-profile')
+      plugin: require('./server/user-profile')
     },
     {
-      plugin: require('./web/add-user-to-views')
+      plugin: require('./server/add-user-to-views')
 	},
 	{
-	  plugin: require('./web/user-signup-login')
+	  plugin: require('./server/user-signup-login')
 	}
   ])
 
