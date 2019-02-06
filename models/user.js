@@ -38,6 +38,21 @@ userSchema.methods.hashPassword = async function () {
   
 	this.password = hash
 	return this
-  }  
+  }
+
+// this is the new method
+userSchema.methods.comparePassword = async function (candidatePassword) {  
+	const isMatch = await Bcrypt.compare(candidatePassword, this.password)
+  
+	if (isMatch) {
+	  return this
+	}
+  
+	const message = 'The entered password is incorrect'
+	throw new Boom(message, {
+	  statusCode: 400,
+	  data: { password: { message } }
+	})
+  }
 
 module.exports = Mongoose.model('User', userSchema)  

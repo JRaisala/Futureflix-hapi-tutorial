@@ -27,10 +27,13 @@ async function start () {
     },
     {
       plugin: require('vision')
-    },
+	},
     {
       plugin: require('./server/authentication')
-    },
+	},
+	{
+		plugin: require('./server/add-user-to-request')
+	},
     {
       plugin: require('./server/base')
     },
