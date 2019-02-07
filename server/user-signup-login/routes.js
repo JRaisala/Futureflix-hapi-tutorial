@@ -2,8 +2,9 @@
 
 const Handler = require('./handler')
 
-const Routes = [  
-  {
+const Routes = [ 
+  // the signup routes
+  {	
     method: 'GET',
     path: '/signup',
     config: Handler.showSignup
@@ -14,7 +15,7 @@ const Routes = [
     config: Handler.signup
   },
 
-  // add the two login related routes
+  // the login routes
   {
     method: 'GET',
     path: '/login',
@@ -30,6 +31,27 @@ const Routes = [
     method: 'GET',
     path: '/logout',
     config: Handler.logout
+  },
+  	// the password reset routes
+  {
+    method: 'GET',
+    path: '/forgot-password',
+    config: Handler.showForgotPassword
+  },
+  {
+    method: 'POST',
+    path: '/forgot-password',
+    config: Handler.forgotPassword
+  },
+  {
+    method: 'GET',
+    path: '/reset-password/{email}/{resetToken}',
+    config: Handler.showResetPassword
+  },
+  {
+    method: 'POST',
+    path: '/reset-password/{email}/{resetToken}',
+    config: Handler.resetPassword
   }
 ]
 
