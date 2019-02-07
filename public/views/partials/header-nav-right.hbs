@@ -1,0 +1,17 @@
+<div class="nav-right nav-menu">  
+    {{#if user}}
+        <a class="nav-item is-tab" href="/profile">
+            <figure class="image is-16x16" style="margin-right: 8px;">
+                <img src="{{user.gravatar}}">
+            </figure>
+            Profile
+        </a>
+        <a class="nav-item is-tab" href="/logout">
+          <! -- logout link -->
+        </a>
+    {{else}}
+        <div class="nav-item">
+          <! -- show sign up and login links -->
+        </div>
+    {{/if}}
+</div>  

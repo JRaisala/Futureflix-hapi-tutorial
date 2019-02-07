@@ -121,4 +121,12 @@ userSchema.methods.comparePasswordResetToken = async function(resetToken) {
   });
 };
 
+//  Gravatar image for user
+userSchema.virtual('gravatar').get(function () {  
+	// create the MD5 hash from the user’s email address
+	const hash = MD5(this.email)
+	// return the ready-to-load avatar URL
+	return `https://gravatar.com/avatar/${hash}?s=100`
+  })
+
 module.exports = Mongoose.model("User", userSchema);
