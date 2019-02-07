@@ -16,7 +16,7 @@ const Transporter = Nodemailer.createTransport(
     }
   })
 )
-const Templates = Path.resolve(__dirname, '..', 'email-templates')
+const Templates = Path.resolve(__dirname, '../server/', 'email-templates')
 
 /**
  * filename: email template name, without ".html" file ending. Email templates are located within "server/email-templates"
@@ -57,7 +57,7 @@ async function prepareTemplate (filename, options = {}) {
 exports.send = async (template, user, subject, data) => {
   const { html, text } = await prepareTemplate(template, data)
   const mailOptions = {
-    from: `Marcus Poehls <marcus@futurestud.io>`,
+    from: 'juha.raisala@attracs.com',
     to: user.email,
     subject: subject,
     html,

@@ -4,6 +4,7 @@ const Joi = require("joi");
 const When = require("when");
 const Boom = require("boom");
 const User = require("../../models").User;
+const Mailer = require("../../utils/mailer");
 const ErrorExtractor = require("../../utils/error-extractor");
 
 const Handler = {
@@ -49,10 +50,10 @@ const Handler = {
 	
 			request.cookieAuth.set({ id: user.id })  // <--- this is the important line
 
-			/* TODO DUNNO WHAT THIS IS
+
 			const discoverURL = `http://${request.headers.host}/discover`
-			Mailer.fireAndForget('welcome', user, '📺 Futureflix — Great to see you!', { discoverURL })
-		  	*/
+			Mailer.send('welcome', user, 'Futureflix — Great to see you!', { discoverURL })
+		  	
 	
 			// \o/ wohoo, sign up successful
 			return h.view('signup-success')

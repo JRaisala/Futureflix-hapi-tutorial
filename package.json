@@ -37,6 +37,8 @@
     "lodash": "~4.17.11",
     "mongoose": "~5.4.0",
     "mongoose-simple-random": "~0.4.1",
+    "nodemailer": "^5.1.1",
+    "nodemailer-postmark-transport": "^2.1.1",
     "vision": "^5.4.4",
     "when": "^3.7.8"
   },
