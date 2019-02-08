@@ -51,7 +51,10 @@ async function start () {
 	},
 	{
 	  plugin: require('./server/user-signup-login')
-	}
+	},
+	{
+		plugin: require('./server/user-watchlist')
+	  }
   ])
 
   // view configuration

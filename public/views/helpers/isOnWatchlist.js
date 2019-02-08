@@ -1,14 +1,10 @@
 'use strict'
 
-module.exports = function (movieOrShow, options) {
+module.exports = function (movieOrShow, options) {  
   // grab user from Handlebars context
   const user = options.data.root.user
 
   if (!user) {
-    return options.inverse(movieOrShow)
-  }
-
-  if (!user.watchlist) {
     return options.inverse(movieOrShow)
   }
 

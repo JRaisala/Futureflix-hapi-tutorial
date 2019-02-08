@@ -174,4 +174,22 @@ userSchema.virtual('gravatar').get(function () {
 	return `https://gravatar.com/avatar/${hash}?s=100`
   })
 
+  /* TODO WATCHLIST NOT WORKING
+  userSchema.virtual('watchlist', {  
+	ref: 'Watchlist',
+	localField: '_id',
+	foreignField: 'user',
+	justOne: true
+  })
+  */
+
+  function autopopulate (next) {  
+	this.populate('watchlist')
+	next()
+  }
+  
+  userSchema.pre('findOne', autopopulate)  
+
+
+
 module.exports = Mongoose.model("User", userSchema);

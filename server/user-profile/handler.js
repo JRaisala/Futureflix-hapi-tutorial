@@ -99,7 +99,7 @@ const Handler = {
         const user = Object.assign(request.user, { username, homepage })
 
         return h
-          .view('login', {
+          .view('user/profile', {
             user,
             errors
           })
