@@ -54,7 +54,16 @@ async function start () {
 	},
 	{
 		plugin: require('./server/user-watchlist')
-	  }
+	  },
+	  {
+		plugin:  require('crumb'),
+		options: {
+		key: 'keepMeSafeFromCsrf',
+		cookieOptions: {
+		isSecure: process.env.NODE_ENV === 'production'
+		}
+	}
+  }
   ])
 
   // view configuration
