@@ -3,20 +3,29 @@
 const Joi = require('joi')
 const Path = require('path')
 const Movie = require(Path.resolve(__dirname, '..', '..', 'models')).Movie
+const Paginator = require(Path.resolve(__dirname, '..', '..', 'utils', 'paginator'))
+
 
 const Handler = {
-  index: {
-    plugins: {
-      'hapi-auth-cookie': {
-        redirectTo: false
-      }
-    },
-    handler: async (request, h) => {
-      const movies = await Movie.find()
-
-      return h.view('movies/index', { movies })
-    }
-  },
+	index: {
+		handler: async (request, h) => {
+		  const totalCount = await Movie.count()
+		  const pagination = new Paginator(request, totalCount)
+	
+		  if (pagination.currentPage > pagination.lastPage) {
+			return h.view('404').code(404)
+		  }
+	
+		  const movies = await Movie.find()
+			.skip(pagination.from)
+			.limit(pagination.perPage)
+	
+		  return h.view('movies/index', {
+			movies,
+			pagination
+		  })
+		}
+	  },
 
   single: {
     plugins: {

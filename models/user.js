@@ -181,7 +181,7 @@ userSchema.virtual('gravatar').get(function () {
 	foreignField: 'user',
 	justOne: true
   })
-  */
+ 
 
   function autopopulate (next) {  
 	this.populate('watchlist')
@@ -189,7 +189,7 @@ userSchema.virtual('gravatar').get(function () {
   }
   
   userSchema.pre('findOne', autopopulate)  
-
+ */
 
 
 module.exports = Mongoose.model("User", userSchema);
