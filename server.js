@@ -13,15 +13,15 @@ Handlebars.registerHelper('repeat', HandlebarsRepeatHelper)
 Dotenv.config({ path: Path.resolve(__dirname, 'secrets.env') })
 
 // create new server instance and connection information
-const server = new Hapi.Server({
+const webServer = new Hapi.Server({
   host: 'localhost',
   port: process.env.PORT || 3000
 })
 
 // register plugins, configure views and start the server instance
-async function start () {
+async function startWeb () {
   // register plugins to server instance
-  await server.register([
+  await webServer.register([
     {
       plugin: require('inert')
     },
@@ -69,7 +69,7 @@ async function start () {
   // view configuration
   const viewsPath = Path.resolve(__dirname, 'public', 'views')
 
-  server.views({
+  webServer.views({
     engines: {
       hbs: Handlebars
     },
@@ -86,12 +86,57 @@ async function start () {
 
   // start your server
   try {
-    await server.start()
-    console.log(`Server started → ${server.info.uri}`)
+    await webServer.start()
+    console.log(`webServer started → ${webServer.info.uri}`)
   } catch (err) {
     console.error(err)
     process.exit(1)
   }
 }
 
-start()
+
+
+// API SERVER
+const api = new Hapi.Server({  
+	host: 'localhost',
+	port: process.env.PORT_API || 3001
+  })
+  
+  // register plugins and start the API web instance
+  async function startApi () {  
+	// register plugins to web instance
+	await api.register([
+	  {
+		plugin: require('hapi-dev-errors'),
+		options: {
+		  showErrors: process.env.NODE_ENV !== 'production',
+		  useYouch: true
+		}
+	  },
+	  {
+		plugin: require('laabr'),
+		options: {
+		  colored: true,
+		  hapiPino: {
+			logPayload: false
+		  }
+		}
+	  },
+	  {
+		plugin: require('./api/tv-shows')
+	  }
+	
+	])
+  
+	// start the API
+	try {
+	  await api.start()
+	  console.log(`ApiServer started → ${webServer.info.uri}`)
+	} catch (err) {
+	  console.error(err)
+	  process.exit(1)
+	}
+  }
+  
+  startWeb()  
+  startApi()  
