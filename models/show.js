@@ -46,8 +46,17 @@ const showSchema = new Schema(
     network: String,
     country: String
   },
+  // minimize JSON for API: remove _id, __v properties
   {
-    toJSON: { virtuals: true },
+    toJSON: {
+		virtuals: true,
+		transform: function (doc, ret, options) {
+		  delete ret._id
+		  // delete ret.__v  // removed by "versionKey" option
+		  return ret
+		},
+		versionKey: false // removes __v from JSON response
+	  },
     toObject: { virtuals: true }
   }
 )
