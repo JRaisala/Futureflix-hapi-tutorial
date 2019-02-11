@@ -78,4 +78,13 @@ showSchema.statics.random = function (limit) {
   })
 }
 
+// use a virtual property for the “seasons” relation
+// allows you to benefit from Mongoose’s “toJSON” configuration
+// to remove seasons before sending them to the client
+showSchema.virtual('seasons', {  
+	ref: 'Season',
+	localField: '_id',
+	foreignField: 'show',
+  })
+
 module.exports = Mongoose.model('Show', showSchema)

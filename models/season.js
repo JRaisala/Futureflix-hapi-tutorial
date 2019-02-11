@@ -34,4 +34,14 @@ const seasonSchema = new Schema(
   }
 )
 
+// virtual property for “episodes” instead of a
+// dedicated “episodes” array within the schema
+// this let’s you use Mongoose’s “toJSON” configuration
+// to remove virtuals when sending to the client
+seasonSchema.virtual('episodes', {  
+	ref: 'Episode',
+	localField: '_id',
+	foreignField: 'season'
+  })
+  
 module.exports = Mongoose.model('Season', seasonSchema)
