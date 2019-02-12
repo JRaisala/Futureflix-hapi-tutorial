@@ -126,6 +126,9 @@ const api = new Hapi.Server({
 		  description:
 			'Futureflix comes with a full-fledged API. You can find the documentation on all provided endpoints here.'
 		},
+		documentationPath: '/docs',
+		schemes: process.env.NODE_ENV === 'production' ? ['https'] : ['http'],
+		host: process.env.NODE_ENV === 'production' ? 'api.futureflix.space' : 'localhost:3001', 
 		grouping: 'tags',
 		tags: [
 		  {
@@ -133,8 +136,8 @@ const api = new Hapi.Server({
 			description: 'Access movie data'
 		  },
 		  {
-			name: 'Shows',
-			description: 'Access Tv-shows data'
+			name: 'TV shows',
+			description: 'Access TV show data'
 		  }
 		]
 	}

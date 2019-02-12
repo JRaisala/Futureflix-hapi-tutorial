@@ -53,7 +53,7 @@ function hasSeasonsAndEpisodes (extend) {
 		 return h.response(shows).header('Link', pagination.link)
 		return shows
 	  },
-	  tags: ['api', 'Shows'],
+	  tags: ['api', 'TV shows'],
 	  validate: {
 		query: {
 		  page: Joi.number().integer().min(1),
@@ -82,7 +82,7 @@ function hasSeasonsAndEpisodes (extend) {
   
 		return show
 	  },
-	  tags: ['api', 'Shows']
+	  tags: ['api', 'TV shows']
   }
 }
 
