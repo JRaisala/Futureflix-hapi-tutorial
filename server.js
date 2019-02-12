@@ -2,8 +2,12 @@
 
 const Hapi = require('hapi')
 const Path = require('path')
+const Inert = require('inert')  
+const Vision = require('vision')  
 const Dotenv = require('dotenv')
 const Handlebars = require('handlebars')
+const HapiSwagger = require('hapi-swagger')  
+const Pkg = require('./package.json')
 const HandlebarsRepeatHelper = require('handlebars-helper-repeat')
 
 // extend handlebars instance
@@ -114,9 +118,35 @@ const api = new Hapi.Server({
 })
   
   // register plugins and start the API web instance
-  async function startApi () {  
+  async function startApi () {
+	const swaggerOptions = {
+		info: {
+		  title: 'Futureflix API Documentation',
+		  version: Pkg.version,
+		  description:
+			'Futureflix comes with a full-fledged API. You can find the documentation on all provided endpoints here.'
+		},
+		grouping: 'tags',
+		tags: [
+		  {
+			name: 'Movies',
+			description: 'Access movie data'
+		  },
+		  {
+			name: 'Shows',
+			description: 'Access Tv-shows data'
+		  }
+		]
+	}
+
 	// register plugins to web instance
 	await api.register([
+		Inert,
+		Vision,
+		{
+		  plugin: HapiSwagger,
+		  options: swaggerOptions
+		},
 	  {
 		plugin: require('hapi-dev-errors'),
 		options: {
