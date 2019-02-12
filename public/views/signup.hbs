@@ -21,6 +21,7 @@
         <form method="POST">
 
             <div class="field">
+				<input type="hidden" name="keepMeSafeFromCsrf" value="{{keepMeSafeFromCsrf}}">
                 <label class="label {{#if errors.email}}is-danger{{/if}}" for="email">
                     {{#if errors.email}} {{errors.email.message}} {{else}}Email address {{/if}}
                 </label>
