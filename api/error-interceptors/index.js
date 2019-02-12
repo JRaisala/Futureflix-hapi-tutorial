@@ -1,3 +1,4 @@
+const APIErrorInterceptor = require('./api-error')  
 const ValidationErrorInterceptor = require('./validation-error')
 
 async function register (server, options) {  

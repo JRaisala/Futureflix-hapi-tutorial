@@ -5,6 +5,7 @@ const Joi = require('joi')
 const Path = require('path')  
 const Show = require(Path.resolve(__dirname, '..', '..', 'models')).Show
 const Paginator = require(Path.resolve(__dirname, '..', '..', 'utils', 'paginator'))
+const APIValidationError = require(Path.resolve(__dirname, '..', 'errors')).APIValidationError  
 
 function getPopulationOptions (extend = '') {  
 	if (hasSeasonsAndEpisodes(extend)) {
@@ -58,6 +59,12 @@ function hasSeasonsAndEpisodes (extend) {
 		  extend: Joi.string()
 			.valid(['seasons', 'seasons,episodes'])
 			.description('Extend the result by seasons or seasons and episodes.')
+			.error(
+				new APIValidationError(
+					'The extend query parameter value must be one of ["seasons", "seasons,episodes"]',
+					'/docs#!/TV_shows/getShows'
+				  )
+			)
 		}
 	  }
 	},
