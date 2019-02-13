@@ -182,6 +182,9 @@ const api = new Hapi.Server({
 		plugin: require('./api/tv-shows')
 	  },
 	  {
+		plugin: require('./api/authentication')
+	  },
+	  {
 		plugin: require('./api/users')
 	  }
 	])

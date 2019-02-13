@@ -5,7 +5,7 @@ const Joi = require('joi')
 const Path = require('path')  
 const Show = require(Path.resolve(__dirname, '..', '..', 'models')).Show
 const Paginator = require(Path.resolve(__dirname, '..', '..', 'utils', 'paginator'))
-const APIValidationError = require(Path.resolve(__dirname, '..', 'errors')).APIValidationError  
+const APIValidationError = require(Path.resolve(__dirname, '..', 'errors')).APIValidationError
 
 function getPopulationOptions (extend = '') {  
 	if (hasSeasonsAndEpisodes(extend)) {
@@ -29,7 +29,7 @@ function hasSeasonsAndEpisodes (extend) {
   }
 
 
-  const Handler = {  
+  const Handler = {
 	index: {
 	  handler: async (request, h) => {
 		const totalCount = await Show.count()
