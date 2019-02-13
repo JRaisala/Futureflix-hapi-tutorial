@@ -180,8 +180,10 @@ const api = new Hapi.Server({
 	  },
 	  {
 		plugin: require('./api/tv-shows')
+	  },
+	  {
+		plugin: require('./api/users')
 	  }
-	
 	])
   
 	// start the API
