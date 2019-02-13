@@ -126,6 +126,15 @@ const api = new Hapi.Server({
 		  description:
 			'Futureflix comes with a full-fledged API. You can find the documentation on all provided endpoints here.'
 		},
+		auth: false,
+		securityDefinitions: {    // <-- this is the new and important configuration
+		  jwt: {
+			type: 'apiKey',
+			name: 'Authorization',
+			in: 'header',
+			'x-keyPrefix': 'Bearer '  // <-- the trailing space is important
+		  },
+		},
 		documentationPath: '/docs',
 		schemes: process.env.NODE_ENV === 'production' ? ['https'] : ['http'],
 		host: process.env.NODE_ENV === 'production' ? 'api.futureflix.space' : 'localhost:3001', 
